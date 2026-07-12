@@ -25,6 +25,7 @@ Requires a running MongoDB instance (local or Atlas) — set `MONGO_URI` accordi
 |--------|---------------------------|------|-----------------------------|
 | POST   | /api/auth/register        | No   | Create account, returns JWT |
 | POST   | /api/auth/login           | No   | Login, returns JWT          |
+| GET     | /api/auth/me              | Yes | Get current User data       |
 | GET    | /api/messages/:userId     | Yes  | 1:1 chat history            |
 | GET    | /api/messages/room/:roomId | Yes | Group chat history          |
 | POST   | /api/rooms                | Yes  | Create group room            |
@@ -33,14 +34,6 @@ Requires a running MongoDB instance (local or Atlas) — set `MONGO_URI` accordi
 Send JWT as `Authorization: Bearer <token>`.
 
 ## Socket.IO events
-
-Connect with the JWT in the auth handshake:
-
-```javascript
-const socket = io("http://localhost:3000", {
-  auth: { token: "<JWT>" }
-});
-```
 
 **Emit (client → server)**
 - `send_message` `{ receiverId, message }` → ack callback with saved message
