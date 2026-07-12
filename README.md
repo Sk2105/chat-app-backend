@@ -13,7 +13,17 @@
 ```bash
 cd chat-app-backend
 npm install
-cp .env.example .env   # then edit MONGO_URI / JWT_SECRET
+```
+
+Then Setup `.env`
+```env
+MONGO_URI=......
+JWT_SECRET=.....
+```
+
+
+Then Run
+```
 npm run dev            # or npm start
 ```
 
